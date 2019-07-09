@@ -31,11 +31,12 @@ public class TweetListener implements StatusListener {
 
     @Override
     public void onStatus(Status status) {
-        Tweet t = new Tweet(status.getId(), status.getText(), status.getText(), LocalDate.of(status.getCreatedAt().getYear(), status.getCreatedAt().getMonth(), status.getCreatedAt().getDay()), status.getText(), status.isTruncated(), status.getGeoLocation(), status.isFavorited(), "politica");
+        //Tweet t = new Tweet(status.getId(), status.getText(), status.getText(), LocalDate.of(status.getCreatedAt().getYear(), status.getCreatedAt().getMonth(), status.getCreatedAt().getDay()), status.getText(), status.isTruncated(), status.getGeoLocation(), status.isFavorited(), "politica");
+        Tweet t = new Tweet(status.getId(), status.getUser().getName(), status.getText(), status.getText(), status.isTruncated(), status.isFavorited(), "politica");
         // Enviar as mensagens
         ProducerRecord<String, Tweet> record = new ProducerRecord<>(topicName, t);
         producer.send(record);
-        logger.info(t.gettext());
+        logger.info(t.getuser());
         //logger.info(t.getLanguage() + "--> " + t.toString());
     }
 

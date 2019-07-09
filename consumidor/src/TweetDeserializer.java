@@ -3,10 +3,11 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.apache.kafka.common.serialization.Deserializer;
 import java.io.IOException;
 import java.util.Map;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 
 
 public class TweetDeserializer implements Deserializer<Tweet> {
-    static final ObjectMapper mapper = new ObjectMapper();
+    static final ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
     public TweetDeserializer() {
         JavaTimeModule javaTimeModule = new JavaTimeModule();

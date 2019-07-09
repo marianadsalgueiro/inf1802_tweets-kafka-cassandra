@@ -1,50 +1,58 @@
-import java.util.Date;
+import java.lang.String;
+import java.util.UUID;
+import twitter4j.GeoLocation;
+import java.time.LocalDate;
 
 public class Tweet {
-    public String user;
-    public String text;
-    public Date createdAt;
-    public String language;
-    public String source;
+    private long id;
+    private String username;
+    private String text;
+    private String source;
+    private boolean isTruncated;
+    private boolean isFavorited;
+    private String categoria;
 
-    public Tweet() {
+    public Tweet(){
     }
 
-    public Tweet(String user, String text, Date createdAt, String language, String source) {
-        this.user = user;
+    public Tweet (long id, String username, String text,String source, boolean isTruncated, boolean isFavorited, String categoria){
+        this.id = id;
+        this.username = username;
         this.text = text;
-        this.createdAt = createdAt;
-        this.language = language;
         this.source = source;
+        this.isTruncated = isTruncated;
+        this.isFavorited = isFavorited;
+        this.categoria = categoria;
     }
 
-    public String getUser() { return this.user; }
-    public void setUser(String user) {
-        this.user = user;
+    public long getId(){
+        return id;
     }
 
-    public String getText() {
-        return this.text;
-    }
-    public void setText(String text) {
-        this.text = text;
+    public String getuser(){
+        return username;
     }
 
-    public Date getCreatedAt() {return this.createdAt; }
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public String gettext(){
+        return text;
     }
 
-    public String getLanguage() { return language; }
-    public void setLanguage(String language) { this.language = language; }
 
-    public String getSource() { return this.source; }
-    public void setSource(String source) { this.source = source;}
-
-    @Override
-    public String toString() {
-        return text + "-- from: " + source + " -- lang: " + language;
+    public String getsource(){
+        return source;
     }
 
+    public boolean isTruncated(){
+        return isTruncated;
+    }
+
+
+    public boolean isFavorited(){
+        return isFavorited;
+    }
+
+    public String getCategoria(){
+        return categoria;
+    }
 
 }
